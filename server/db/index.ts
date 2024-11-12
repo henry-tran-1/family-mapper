@@ -44,9 +44,11 @@ export async function findRelationshipPath(
     )
     SELECT 
       relationship_path,
-      depth
-    FROM relationship_path
-    WHERE target_id = ?
+      depth,
+      p.gender AS target_person_gender
+    FROM relationship_path rp
+    JOIN persons p ON p.id = rp.target_id
+    WHERE rp.target_id = ?
     ORDER BY depth
     LIMIT 1;
   `,

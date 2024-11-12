@@ -9,4 +9,5 @@ export interface Relationship {
 export interface RelationshipPath {
   relationship_path: string
   depth: number
+  target_person_gender: string
 }
