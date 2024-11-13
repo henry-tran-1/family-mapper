@@ -9,6 +9,7 @@ router.get('/:sourceId/:targetId', async (req, res) => {
   // Add params to dynamically use findRelationshipPath
   const sourceId = Number(req.params.sourceId)
   const targetId = Number(req.params.targetId)
+
   try {
     // First ID is the anchor family member
     // Second ID is the target family member
