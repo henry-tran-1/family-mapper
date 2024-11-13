@@ -23,6 +23,22 @@ export default function interpretRelationship(pathObj: RelationshipPath) {
         return 'nephew'
       case 'child,child,parent,parent':
         return 'cousin'
+      case 'spouse':
+        return 'husband'
+      case 'spouse,child':
+        return 'father in law'
+      case 'spouse,child, child':
+        return 'grandfather in law'
+      case 'spouse,child,parent':
+        return 'brother in law'
+      case 'parent,spouse':
+        return 'son in law'
+      case 'child,parent,spouse':
+        return 'brother in law'
+      case 'parent,parent,spouse':
+        return 'grandson in law'
+      default:
+        return 'complicated relationship'
     }
   } else if (pathObj.target_person_gender === 'female') {
     switch (pathObj.relationship_path) {
@@ -46,6 +62,22 @@ export default function interpretRelationship(pathObj: RelationshipPath) {
         return 'niece'
       case 'child,child,parent,parent':
         return 'cousin'
+      case 'spouse':
+        return 'wife'
+      case 'spouse,child':
+        return 'mother in law'
+      case 'spouse,child,child':
+        return 'grandmother in law'
+      case 'spouse,child,parent':
+        return 'sister in law'
+      case 'parent,spouse':
+        return 'daughter in law'
+      case 'child,parent,spouse':
+        return 'sister in law'
+      case 'parent,parent,spouse':
+        return 'granddaughter in law'
+      default:
+        return 'complicated relationship'
     }
   }
 }
