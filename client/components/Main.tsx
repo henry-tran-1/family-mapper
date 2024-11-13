@@ -1,4 +1,3 @@
-import useTree from '../hooks/useTree'
 import Persons from './Persons'
 import Tree from './Tree'
 
