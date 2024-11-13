@@ -2,7 +2,6 @@ import { RelationshipPath } from '../models/relationships'
 
 export default function interpretRelationship(pathObj: RelationshipPath) {
   if (pathObj.target_person_gender === 'male') {
-    console.log(pathObj.relationship_path)
     switch (pathObj.relationship_path) {
       case 'child':
         return 'father'

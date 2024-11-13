@@ -5,13 +5,15 @@ import interpretRelationship from '../interpret.ts'
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
+router.get('/:sourceId/:targetId', async (req, res) => {
   // Add params to dynamically use findRelationshipPath
+  const sourceId = Number(req.params.sourceId)
+  const targetId = Number(req.params.targetId)
   try {
     // First ID is the anchor family member
     // Second ID is the target family member
     // Therefore shows the relationship of the second person to the first person
-    const pathObj = await db.findRelationshipPath(6, 1)
+    const pathObj = await db.findRelationshipPath(sourceId, targetId)
     if (pathObj !== undefined) {
       const relationship = interpretRelationship(pathObj)
       res.json(relationship)
