@@ -7,7 +7,7 @@ interface Props {
   gender: string
 }
 
-export default function Person({ sourceId, id, name, gender }: Props) {
+export default function Person({ sourceId, id, name }: Props) {
   let self = false
   if (Number(sourceId) === id) {
     self = true
