@@ -1,7 +1,14 @@
 import { useState } from 'react'
+import usePersons from '../hooks/usePersons'
+import Person from './Person'
 
 export default function Tree() {
   const [sourceId, setSourceId] = useState('6')
+
+  const { data, isPending, isError } = usePersons()
+
+  if (isPending) return <p>Loading...</p>
+  if (isError) return <p>Sorry, an error has occured. Come back later.</p>
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const id = event.target.value
@@ -28,7 +35,7 @@ export default function Tree() {
       </form>
 
       <div className="treeContainer">
-        <div className="person">
+        {/* <div className="person">
           <p>John</p>
           <p>Father</p>
         </div>
@@ -39,7 +46,12 @@ export default function Tree() {
         <div className="person">
           <p>Alice</p>
           <p>You</p>
-        </div>
+        </div> */}
+        {data?.persons.map((person) => (
+          <div key={person.id}>
+            <Person sourceId={sourceId} {...person} />
+          </div>
+        ))}
       </div>
     </>
   )
