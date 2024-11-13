@@ -18,9 +18,9 @@ export default function Main() {
         <p>Placeholder text</p>
       </header>
       <main>
-        <Persons />
         <Tree />
         <p>The relationship between 8 (source) to 6 (target) is {data}</p>
+        <Persons />
       </main>
     </>
   )

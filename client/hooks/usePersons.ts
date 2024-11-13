@@ -6,7 +6,7 @@ export default function usePersons() {
   return useQuery({
     queryKey: ['persons'],
     queryFn: async () => {
-      const res = await request.get('/api/v1/tree')
+      const res = await request.get('/api/v1/persons')
       if (res.ok) {
         return res.body as { persons: Person[] }
       } else {
