@@ -4,8 +4,7 @@ export default function Persons() {
   const { data, isPending, isError } = usePersons()
 
   if (isPending) return <p>Loading...</p>
-
-  if (isError) return <p>Sorry, an error has occured. Come back later</p>
+  if (isError) return <p>Sorry, an error has occured. Come back later.</p>
 
   return (
     <>
