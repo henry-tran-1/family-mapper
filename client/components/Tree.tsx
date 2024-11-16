@@ -35,11 +35,40 @@ export default function Tree() {
       </form>
 
       <div className="flex flex-wrap">
-        {data?.persons.map((person) => (
-          <div key={person.id}>
-            <Person sourceId={sourceId} {...person} />
-          </div>
-        ))}
+        {data?.persons
+          .filter((person) => person.generation === 1)
+          .map((person) => (
+            <div key={person.id}>
+              <Person sourceId={sourceId} {...person} />
+            </div>
+          ))}
+      </div>
+      <div className="flex flex-wrap">
+        {data?.persons
+          .filter((person) => person.generation === 2)
+          .map((person) => (
+            <div key={person.id}>
+              <Person sourceId={sourceId} {...person} />
+            </div>
+          ))}
+      </div>
+      <div className="flex flex-wrap">
+        {data?.persons
+          .filter((person) => person.generation === 3)
+          .map((person) => (
+            <div key={person.id}>
+              <Person sourceId={sourceId} {...person} />
+            </div>
+          ))}
+      </div>
+      <div className="flex flex-wrap">
+        {data?.persons
+          .filter((person) => person.generation === 4)
+          .map((person) => (
+            <div key={person.id}>
+              <Person sourceId={sourceId} {...person} />
+            </div>
+          ))}
       </div>
     </>
   )
