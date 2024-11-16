@@ -34,7 +34,7 @@ export default function Tree() {
         </select>
       </form>
 
-      <div className="treeContainer">
+      <div className="flex flex-wrap">
         {data?.persons.map((person) => (
           <div key={person.id}>
             <Person sourceId={sourceId} {...person} />

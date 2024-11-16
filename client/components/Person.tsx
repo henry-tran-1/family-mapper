@@ -19,7 +19,7 @@ export default function Person({ sourceId, id, name }: Props) {
   if (isError) return <p>Sorry! An error has occured.</p>
 
   return (
-    <div className="person">
+    <div className="bg-[#20b2aa] h-[200px] min-w-[175px] rounded-[15px] m-[8px] p-[10px] align-content-center justify-items-center">
       <p>{id}</p>
       <p>{name}</p>
       <p>{self ? 'you' : data}</p>
