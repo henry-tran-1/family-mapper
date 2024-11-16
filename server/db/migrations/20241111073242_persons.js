@@ -9,6 +9,7 @@ export function up(knex) {
     table.string('gender')
     table.integer('generation')
     table.string('image')
+    table.string('description')
   })
 }
 
