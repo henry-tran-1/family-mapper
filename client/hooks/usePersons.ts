@@ -10,7 +10,7 @@ export default function usePersons() {
       if (res.ok) {
         return res.body as { persons: Person[] }
       } else {
-        console.log('Problem with fetching persons (client to server)')
+        console.log('Problem with fetching all persons (client to server)')
       }
     },
   })

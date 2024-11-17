@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import usePersons from '../hooks/usePersons'
 import Polaroid from './Polaroid'
+import { useAllPersons } from '../hooks/hooks'
 
-export default function Tree() {
+export default function SeeTree() {
   const [sourceId, setSourceId] = useState('1')
 
-  const { data, isPending, isError } = usePersons()
+  const { data, isPending, isError } = useAllPersons()
 
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Sorry, an error has occured. Come back later.</p>
@@ -23,6 +23,7 @@ export default function Tree() {
 
   return (
     <div className="m-5">
+      {/* Select input to choose anchor member */}
       <form className="flex items-center justify-center">
         <label
           htmlFor="sourceId"
@@ -44,6 +45,7 @@ export default function Tree() {
         </select>
       </form>
 
+      {/* Displays Generation 1 */}
       <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 1)
@@ -53,6 +55,7 @@ export default function Tree() {
             </div>
           ))}
       </div>
+      {/* Displays Generation 2 */}
       <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 2)
@@ -62,6 +65,7 @@ export default function Tree() {
             </div>
           ))}
       </div>
+      {/* Displays Generation 3 */}
       <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 3)
@@ -71,6 +75,7 @@ export default function Tree() {
             </div>
           ))}
       </div>
+      {/* Displays Generation 4 */}
       <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 4)

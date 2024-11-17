@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import useTree from '../hooks/useTree'
+import { useRelationship } from '../hooks/hooks'
 import { useState } from 'react'
 
 interface Props {
@@ -30,7 +30,11 @@ export default function Polaroid({
     setFlip((prev) => !prev)
   }
 
-  const { data, isPending, isError } = useTree(Number(sourceId), id, self)
+  const { data, isPending, isError } = useRelationship(
+    Number(sourceId),
+    id,
+    self,
+  )
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Sorry! An error has occured.</p>
 
