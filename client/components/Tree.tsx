@@ -22,19 +22,29 @@ export default function Tree() {
   // render person's info as well
 
   return (
-    <>
-      <h2>Tree</h2>
-      <p>the tree will be placed here</p>
-      <form>
-        <label htmlFor="sourceId">Please select yourself</label>
-        <select name="sourceId" id="sourceId" onChange={handleChange}>
-          <option value="6">Henry</option>
-          <option value="8">Eliza</option>
-          <option value="1">Amma</option>
+    <div className="m-5">
+      <form className="flex justify-center items-center">
+        <label
+          htmlFor="sourceId"
+          className="font-heading m-5 text-2xl font-medium"
+        >
+          Please select yourself
+        </label>
+        <select
+          name="sourceId"
+          id="sourceId"
+          onChange={handleChange}
+          className="font-heading text-2xl bg-purple-400 border-gray-950 border-solid rounded h-11 "
+        >
+          {data?.persons.map((person) => (
+            <option key={person.id} value={String(person.id)}>
+              {person.name.charAt(0).toUpperCase() + person.name.slice(1)}
+            </option>
+          ))}
         </select>
       </form>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 1)
           .map((person) => (
@@ -43,7 +53,7 @@ export default function Tree() {
             </div>
           ))}
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 2)
           .map((person) => (
@@ -52,7 +62,7 @@ export default function Tree() {
             </div>
           ))}
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 3)
           .map((person) => (
@@ -61,7 +71,7 @@ export default function Tree() {
             </div>
           ))}
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 4)
           .map((person) => (
@@ -70,6 +80,6 @@ export default function Tree() {
             </div>
           ))}
       </div>
-    </>
+    </div>
   )
 }

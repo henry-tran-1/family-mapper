@@ -4,10 +4,7 @@ import Tree from './Tree'
 export default function Main() {
   return (
     <>
-      <header>
-        <h2>Placeholder heading</h2>
-        <p>Placeholder text</p>
-      </header>
+      <header></header>
       <main>
         <Tree />
 

@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         polaroid: ['Caveat'],
+        heading: ['Playfair Display'],
       },
     },
   },
