@@ -27,7 +27,7 @@ export default function Person({
   }
 
   const handleClick = () => {
-    setFlip(!flip)
+    setFlip((prev) => !prev)
   }
 
   const { data, isPending, isError } = useTree(Number(sourceId), id, self)
@@ -35,17 +35,36 @@ export default function Person({
   if (isError) return <p>Sorry! An error has occured.</p>
 
   return (
+    // overrall container civ, that has click effect and size constraint
     <div
-      className="h-[300px] w-[200px] rounded-[15px] m-[-2px] p-0 align-content-center justify-items-center font-polaroid text-[24px] font-bold hover:scale-125 duration-300 transition-all "
-      onClick={() => handleClick}
+      className="relative w-[250px] h-[300px] perspective-1000"
+      onClick={handleClick}
     >
-      <img
-        src={`/images/${image}`}
-        alt={`${name}`}
-        className="w-[300px] h-[300px] object-cover"
-      />
-      <p className="relative -top-[80px]">{name}</p>
-      <p className="relative -top-[95px]">{self ? 'you' : data}</p>
+      {/* container that will manage flip effect */}
+      <div
+        className={`w-full h-full transition-transform duration-500 transform-style-preserve-3d ${flip ? 'rotate-y-180' : ''}`}
+      >
+        {/* front side of the polaroid */}
+        <section
+          className={`absolute h-full w-full rounded-[15px] m-[-2px] p-0 align-content-center justify-items-center font-polaroid text-[24px] font-bold hover:scale-125 duration-300 transition-all ${flip ? 'hidden' : ''} `}
+        >
+          <img
+            src={`/images/${image}`}
+            alt={`${name}`}
+            className="w-full h-full object-cover"
+          />
+          <p className="relative -top-[80px]">{name}</p>
+          <p className="relative -top-[95px]">{self ? 'you' : data}</p>
+        </section>
+
+        {/* back side of the polaroid */}
+        <section
+          className={`absolute w-full h-full bg-gray-200 rounded-xl backface-hidden flex flex-col justify-center items-center p-4 ${flip ? 'block' : 'hidden'}`}
+        >
+          <p className="text-center">{name}</p>
+          <p className="text-center">{description}</p>
+        </section>
+      </div>
     </div>
   )
 }
