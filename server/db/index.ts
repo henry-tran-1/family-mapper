@@ -7,10 +7,13 @@ export async function getAllPersons(db = connection): Promise<Person[]> {
   return db('persons').select()
 }
 
-// Add new person to persons table
+// Add new person to persons table (currently only attached unknown polaroid)
 // Returns the id of the added person
 export async function addPerson(person: PersonData, db = connection) {
-  const [id] = await db('persons').insert(person)
+  const [id] = await db('persons').insert({
+    ...person,
+    image: 'unknown_polaroid.png',
+  })
   return id
 }
 
