@@ -1,11 +1,21 @@
 import { RelationshipPath } from '../../models/relationships.ts'
-import { Person } from '../../models/tree.ts'
+import { Person, PersonData } from '../../models/person.ts'
 import connection from './connection.ts'
 
+// Returns the entire persons table
 export async function getAllPersons(db = connection): Promise<Person[]> {
   return db('persons').select()
 }
 
+// Add new person to persons table
+// Returns the id of the added person
+export async function addPerson(person: PersonData, db = connection) {
+  const [id] = await db('persons').insert(person)
+  return id
+}
+
+// Recursive CTE query that finds relationship of endPerson to startPerson
+// returns the relationship_path, target_person_gender, and depth
 export async function findRelationshipPath(
   startPersonId: number,
   endPersonId: number,
