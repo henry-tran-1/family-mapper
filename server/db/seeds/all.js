@@ -69,7 +69,7 @@ export async function seed(knex) {
       name: 'eliza',
       gender: 'female',
       generation: 4,
-      image: 'eliza_polaroid_png',
+      image: 'eliza_polaroid.png',
       description: 'responsible child',
     },
     {

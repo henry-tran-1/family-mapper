@@ -4,10 +4,17 @@ interface Props {
   sourceId: string
   id: number
   name: string
-  gender: string
+  image: string
+  description: string
 }
 
-export default function Person({ sourceId, id, name }: Props) {
+export default function Person({
+  sourceId,
+  id,
+  name,
+  image,
+  description,
+}: Props) {
   let self = false
   if (Number(sourceId) === id) {
     self = true
@@ -19,10 +26,10 @@ export default function Person({ sourceId, id, name }: Props) {
   if (isError) return <p>Sorry! An error has occured.</p>
 
   return (
-    <div className="bg-[#20b2aa] h-[200px] min-w-[175px] rounded-[15px] m-[8px] p-[10px] align-content-center justify-items-center">
-      <p>{id}</p>
-      <p>{name}</p>
-      <p>{self ? 'you' : data}</p>
+    <div className="h-[300px] min-w-[175px] rounded-[15px] m-[-2px] p-0  align-content-center justify-items-center font-polaroid text-[24px]">
+      <img src={`/images/${image}`} alt={`${name}`} className="w-[300px]" />
+      <p className="relative -top-[80px]">{name}</p>
+      <p className="relative -top-[95px]">{self ? 'you' : data}</p>
     </div>
   )
 }
