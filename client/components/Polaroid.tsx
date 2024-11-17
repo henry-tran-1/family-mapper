@@ -42,7 +42,7 @@ export default function Polaroid({
     >
       {/* container that will manage flip effect */}
       <div
-        className={`relative w-full h-full transition-transform duration-500 transform-style-preserve-3d ${flip ? 'rotate-y-180' : ''}`}
+        className={`w-full h-full transition-transform duration-500 transform-style-preserve-3d ${flip ? 'rotate-y-180' : ''}`}
       >
         {/* front side of the polaroid */}
         <section
@@ -59,7 +59,7 @@ export default function Polaroid({
 
         {/* back side of the polaroid */}
         <section
-          className={`absolute w-full h-full rounded-[15px] backface-hidden m-[-2px] p-0 align-content-center justify-items-center font-polaroid text-[24px] text-bold p-0 hover:scale-125 duration-300 transition-all ${flip ? 'block' : 'hidden'}`}
+          className={`absolute w-full h-full rounded-[15px] backface-hidden m-[-2px] p-0 align-content-center justify-items-center font-polaroid text-[24px] text-bold  hover:scale-125 duration-300 transition-all ${flip ? 'block' : 'hidden'}`}
         >
           <img
             src="/images/polaroid_back.png"

@@ -3,7 +3,7 @@ import usePersons from '../hooks/usePersons'
 import Polaroid from './Polaroid'
 
 export default function Tree() {
-  const [sourceId, setSourceId] = useState('6')
+  const [sourceId, setSourceId] = useState('1')
 
   const { data, isPending, isError } = usePersons()
 

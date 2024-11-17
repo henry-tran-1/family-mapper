@@ -1,4 +1,3 @@
-import Persons from './Persons'
 import Tree from './Tree'
 
 export default function Main() {
@@ -7,8 +6,6 @@ export default function Main() {
       <header></header>
       <main>
         <Tree />
-
-        <Persons />
       </main>
     </>
   )
