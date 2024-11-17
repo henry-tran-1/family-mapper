@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import usePersons from '../hooks/usePersons'
-import Person from './Person'
+import Polaroid from './Polaroid'
 
 export default function Tree() {
-  const [sourceId, setSourceId] = useState('6')
+  const [sourceId, setSourceId] = useState('1')
 
   const { data, isPending, isError } = usePersons()
 
@@ -22,54 +22,64 @@ export default function Tree() {
   // render person's info as well
 
   return (
-    <>
-      <h2>Tree</h2>
-      <p>the tree will be placed here</p>
-      <form>
-        <label htmlFor="sourceId">Please select yourself</label>
-        <select name="sourceId" id="sourceId" onChange={handleChange}>
-          <option value="6">Henry</option>
-          <option value="8">Eliza</option>
-          <option value="1">Amma</option>
+    <div className="m-5">
+      <form className="flex items-center justify-center">
+        <label
+          htmlFor="sourceId"
+          className="m-5 text-2xl font-medium font-heading"
+        >
+          Please select yourself
+        </label>
+        <select
+          name="sourceId"
+          id="sourceId"
+          onChange={handleChange}
+          className="text-2xl bg-[#00ADB5] border-solid rounded font-heading border-gray-950 h-11 "
+        >
+          {data?.persons.map((person) => (
+            <option key={person.id} value={String(person.id)}>
+              {person.name.charAt(0).toUpperCase() + person.name.slice(1)}
+            </option>
+          ))}
         </select>
       </form>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 1)
           .map((person) => (
             <div key={person.id}>
-              <Person sourceId={sourceId} {...person} />
+              <Polaroid sourceId={sourceId} {...person} />
             </div>
           ))}
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 2)
           .map((person) => (
             <div key={person.id}>
-              <Person sourceId={sourceId} {...person} />
+              <Polaroid sourceId={sourceId} {...person} />
             </div>
           ))}
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 3)
           .map((person) => (
             <div key={person.id}>
-              <Person sourceId={sourceId} {...person} />
+              <Polaroid sourceId={sourceId} {...person} />
             </div>
           ))}
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {data?.persons
           .filter((person) => person.generation === 4)
           .map((person) => (
             <div key={person.id}>
-              <Person sourceId={sourceId} {...person} />
+              <Polaroid sourceId={sourceId} {...person} />
             </div>
           ))}
       </div>
-    </>
+    </div>
   )
 }

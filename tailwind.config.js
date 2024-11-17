@@ -2,7 +2,12 @@
 export default {
   content: ['./index.html', './client/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        polaroid: ['Caveat'],
+        heading: ['Playfair Display'],
+      },
+    },
   },
   plugins: [],
 }
