@@ -1,11 +1,13 @@
 import { Outlet } from 'react-router-dom'
+import Nav from './Nav'
 
 function App() {
   return (
     <div>
-      <h1 className="text-4xl font-heading font-medium text-center p-3 mb-4 bg-purple-400">
+      <h1 className="text-4xl font-heading font-medium text-center p-3 bg-[#00ADB5]">
         An Interactive Family Tree App
       </h1>
+      <Nav />
       <Outlet />
     </div>
   )

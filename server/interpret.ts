@@ -79,5 +79,44 @@ export default function interpretRelationship(pathObj: RelationshipPath) {
       default:
         return 'complicated relationship'
     }
+  } else if (pathObj.target_person_gender === 'binary') {
+    switch (pathObj.relationship_path) {
+      case 'child':
+        return 'parent'
+      case 'parent':
+        return 'child'
+      case 'child,child':
+        return 'grandparent'
+      case 'parent,parent':
+        return 'grandchild'
+      case 'child,parent':
+        return 'sibling'
+      case 'child,child,child':
+        return 'great grandparent'
+      case 'parent,parent,parent':
+        return 'great grandchild'
+      case 'child,child,parent':
+        return 'pibling'
+      case 'child,parent,parent':
+        return 'nibling'
+      case 'child,child,parent,parent':
+        return 'cousin'
+      case 'spouse':
+        return 'partner'
+      case 'spouse,child':
+        return 'parent in law'
+      case 'spouse,child,child':
+        return 'grandparent in law'
+      case 'spouse,child,parent':
+        return 'sibling in law'
+      case 'parent,spouse':
+        return 'child in law'
+      case 'child,parent,spouse':
+        return 'sibling in law'
+      case 'parent,parent,spouse':
+        return 'grandchild in law'
+      default:
+        return 'complicated relationship'
+    }
   }
 }
