@@ -36,42 +36,35 @@ export default function Polaroid({
 
   return (
     // overrall container civ, that has click effect and size constraint
-    <div
-      className="relative w-[250px] h-[300px] perspective-[1000px]"
-      onClick={handleClick}
-    >
-      {/* container that will manage flip effect */}
-      <div
-        className={`w-full h-full transition-transform duration-500 transform-style-preserve-3d ${flip ? 'rotate-y-180' : ''}`}
+    // TODO: flip animation effect on click
+    <div className="relative w-[250px] h-[300px]" onClick={handleClick}>
+      {/* front side of the polaroid */}
+      <section
+        className={`absolute h-full w-full rounded-md -m-0.5 p-0 align-content-center justify-items-center font-polaroid text-[24px] font-bold hover:scale-125 duration-300 transition-all ${flip ? 'hidden' : ''} `}
       >
-        {/* front side of the polaroid */}
-        <section
-          className={`absolute h-full w-full rounded-[15px] backface-hidden m-[-2px] p-0 align-content-center justify-items-center font-polaroid text-[24px] font-bold hover:scale-125 duration-300 transition-all ${flip ? 'hidden' : ''} `}
-        >
-          <img
-            src={`/images/${image}`}
-            alt={`Front of ${name}'s polaroid`}
-            className="w-full h-full object-cover"
-          />
-          <p className="relative -top-[80px]">{name}</p>
-          <p className="relative -top-[95px]">{self ? 'you' : data}</p>
-        </section>
+        <img
+          src={`/images/${image}`}
+          alt={`Front of ${name}'s polaroid`}
+          className="object-cover w-full h-full"
+        />
+        <p className="relative -top-[80px]">{name}</p>
+        <p className="relative -top-[95px]">{self ? 'you' : data}</p>
+      </section>
 
-        {/* back side of the polaroid */}
-        <section
-          className={`absolute w-full h-full rounded-[15px] backface-hidden m-[-2px] p-0 align-content-center justify-items-center font-polaroid text-[24px] text-bold  hover:scale-125 duration-300 transition-all ${flip ? 'block' : 'hidden'}`}
-        >
-          <img
-            src="/images/polaroid_back.png"
-            alt={`Back of ${name}'s polaroid`}
-            className="w-full h-full object-cover"
-          />
-          <p className="text-center w-[200px] relative -top-[230px]">{name}</p>
-          <p className="text-center w-[200px] relative -top-[180px]">
-            {description}
-          </p>
-        </section>
-      </div>
+      {/* back side of the polaroid */}
+      <section
+        className={`absolute w-full h-full rounded-md  -m-0.5 p-0 align-content-center justify-items-center font-polaroid text-[24px] text-bold  hover:scale-125 duration-300 transition-all ${flip ? '' : 'hidden'}`}
+      >
+        <img
+          src="/images/polaroid_back.png"
+          alt={`Back of ${name}'s polaroid`}
+          className="object-cover w-full h-full"
+        />
+        <p className="text-center w-[200px] relative -top-[230px]">{name}</p>
+        <p className="text-center w-[200px] relative -top-[180px]">
+          {description}
+        </p>
+      </section>
     </div>
   )
 }

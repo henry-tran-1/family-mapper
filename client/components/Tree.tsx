@@ -23,10 +23,10 @@ export default function Tree() {
 
   return (
     <div className="m-5">
-      <form className="flex justify-center items-center">
+      <form className="flex items-center justify-center ">
         <label
           htmlFor="sourceId"
-          className="font-heading m-5 text-2xl font-medium"
+          className="m-5 text-2xl font-medium font-heading"
         >
           Please select yourself
         </label>
@@ -34,7 +34,7 @@ export default function Tree() {
           name="sourceId"
           id="sourceId"
           onChange={handleChange}
-          className="font-heading text-2xl bg-purple-400 border-gray-950 border-solid rounded h-11 "
+          className="text-2xl bg-purple-400 border-solid rounded font-heading border-gray-950 h-11 "
         >
           {data?.persons.map((person) => (
             <option key={person.id} value={String(person.id)}>
