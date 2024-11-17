@@ -32,7 +32,8 @@ export async function getRelationship(
 }
 
 // Post a new person to the persons table
-export async function addPerson(details: PersonData) {
-  const res = await request.post('/api/v1/persons').send(details)
+export async function addPerson(personDetails: PersonData) {
+  const res = await request.post('/api/v1/persons').send(personDetails)
+  console.log('api function:', res.body)
   return res.body
 }

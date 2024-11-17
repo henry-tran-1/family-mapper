@@ -1,5 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import * as API from '../apis/apiClient'
+import { PersonData } from '../../models/person'
 
 // Get the whole list of family members
 export function useAllPersons() {
@@ -18,5 +19,18 @@ export function useRelationship(
   return useQuery({
     queryKey: ['tree', sourceId, targetId],
     queryFn: () => API.getRelationship(sourceId, targetId, self),
+  })
+}
+
+// Post new person to persons table
+export function useAddPerson() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: (personDetails: PersonData) => API.addPerson(personDetails),
+    onSuccess: (data) => {
+      console.log('hook:', data)
+      queryClient.invalidateQueries({ queryKey: ['persons'] })
+    },
   })
 }
