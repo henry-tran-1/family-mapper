@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import usePersons from '../hooks/usePersons'
-import Person from './Person'
+import Polaroid from './Polaroid'
 
 export default function Tree() {
   const [sourceId, setSourceId] = useState('6')
@@ -49,7 +49,7 @@ export default function Tree() {
           .filter((person) => person.generation === 1)
           .map((person) => (
             <div key={person.id}>
-              <Person sourceId={sourceId} {...person} />
+              <Polaroid sourceId={sourceId} {...person} />
             </div>
           ))}
       </div>
@@ -58,7 +58,7 @@ export default function Tree() {
           .filter((person) => person.generation === 2)
           .map((person) => (
             <div key={person.id}>
-              <Person sourceId={sourceId} {...person} />
+              <Polaroid sourceId={sourceId} {...person} />
             </div>
           ))}
       </div>
@@ -67,7 +67,7 @@ export default function Tree() {
           .filter((person) => person.generation === 3)
           .map((person) => (
             <div key={person.id}>
-              <Person sourceId={sourceId} {...person} />
+              <Polaroid sourceId={sourceId} {...person} />
             </div>
           ))}
       </div>
@@ -76,7 +76,7 @@ export default function Tree() {
           .filter((person) => person.generation === 4)
           .map((person) => (
             <div key={person.id}>
-              <Person sourceId={sourceId} {...person} />
+              <Polaroid sourceId={sourceId} {...person} />
             </div>
           ))}
       </div>
