@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { RelationshipData } from '../../models/relationships'
+import { useAllPersons } from '../hooks/hooks'
 
 interface Props {
   onSubmit: (_: { personId: string; relationships: RelationshipData }) => void
@@ -24,6 +25,10 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
     const { name, value } = event.target
     setFormState((prev) => ({ ...prev, [name]: value }))
   }
+
+  const { data, isPending, isError } = useAllPersons()
+  if (isPending) return <p>Loading...</p>
+  if (isError) return <p>Oh! Error!</p>
 
   return (
     <>
@@ -74,7 +79,25 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
             </button>
           </form>
         </section>
-        <section>This will list all the current family members</section>
+        <section>
+          <table>
+            <caption className="w-[400px]">
+              Table of Family Member and their ID
+            </caption>
+            <thead>
+              <th className="p-3 m-1">Family Member</th>
+              <th className="p-3 m-1">Member ID</th>
+            </thead>
+            <tbody>
+              {data?.persons.map((person) => (
+                <tr key={person.id}>
+                  <td className="text-center">{person.name}</td>
+                  <td className="text-center">{person.id}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
       </div>
     </>
   )
