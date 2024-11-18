@@ -1,25 +1,29 @@
+import { useState } from 'react'
 import { PersonData } from '../../models/person'
 import { useAddPerson } from '../hooks/hooks'
+import DetailsForm from './DetailsForm'
 
+// A parent component, that will hold the DetailsForm and RelationshipsForm
+// The DetailsForm will appear first, and completed first
+// When submitted, it will post the person details, and return their new ID
+// Also, it will hide the DetailsForm, and make RelationshipsForm visible
+// RelationshipsForm will take the new ID as a prop, and allow the relationships to be entered
 export default function BuildTree() {
   const addPerson = useAddPerson()
+  const [personId, setPersonId] = useState('')
 
-  const data: PersonData = {
-    name: 'frontTest',
-    gender: 'nonbinary',
-    generation: 1,
-    description: 'this is a test!',
+  const handleSubmitDetails = async (person: PersonData) => {
+    const result = await addPerson.mutateAsync(person)
+    setPersonId(() => result)
   }
 
-  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const result = await addPerson.mutateAsync(data)
-    console.log('component:', result)
-  }
+  console.log(personId)
 
   return (
     <>
       <p>there will be forms here to enter new family members</p>
-      <button onClick={handleSubmit}>Submit</button>
+
+      <DetailsForm onSubmit={handleSubmitDetails} />
     </>
   )
 }

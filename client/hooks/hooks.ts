@@ -29,7 +29,6 @@ export function useAddPerson() {
   return useMutation({
     mutationFn: (personDetails: PersonData) => API.addPerson(personDetails),
     onSuccess: (data) => {
-      console.log('hook:', data)
       queryClient.invalidateQueries({ queryKey: ['persons'] })
     },
   })

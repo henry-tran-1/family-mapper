@@ -79,7 +79,7 @@ export default function interpretRelationship(pathObj: RelationshipPath) {
       default:
         return 'complicated relationship'
     }
-  } else if (pathObj.target_person_gender === 'binary') {
+  } else if (pathObj.target_person_gender === 'nonbinary') {
     switch (pathObj.relationship_path) {
       case 'child':
         return 'parent'
