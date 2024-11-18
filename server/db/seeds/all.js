@@ -38,7 +38,7 @@ export async function seed(knex) {
       gender: 'female',
       generation: 2,
       image: 'phuong_polaroid.png',
-      description: 'makes great banh xeo',
+      description: 'made the filled rolls',
     },
     {
       id: 5,
@@ -46,7 +46,7 @@ export async function seed(knex) {
       gender: 'male',
       generation: 3,
       image: 'kenneth_polaroid.png',
-      description: 'biomedical engineer',
+      description: "don't trust his movie suggestions",
     },
     {
       id: 6,
@@ -54,7 +54,7 @@ export async function seed(knex) {
       gender: 'male',
       generation: 3,
       image: 'henry_polaroid.png',
-      description: 'struggled all weekend on photopea',
+      description: 'loves a steak and cheese pie',
     },
     {
       id: 7,
@@ -62,7 +62,7 @@ export async function seed(knex) {
       gender: 'female',
       generation: 3,
       image: 'jen_polaroid.png',
-      description: 'graphic design artist',
+      description: 'loves a bargin, and loves to bargain',
     },
     {
       id: 8,
@@ -78,7 +78,7 @@ export async function seed(knex) {
       gender: 'male',
       generation: 4,
       image: 'ryan_polaroid.png',
-      description: 'main character syndrome',
+      description: 'main character',
     },
     {
       id: 10,

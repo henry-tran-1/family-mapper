@@ -1,5 +1,8 @@
 import { RelationshipPath } from '../models/relationships'
 
+// pathObj is returned from recursive query in the form:
+// {relationship_path: 'string', depth: integer, target_person_gender: 'string'}
+// translates relationship_path into the actual relationship, based on gender
 export default function interpretRelationship(pathObj: RelationshipPath) {
   if (pathObj.target_person_gender === 'male') {
     switch (pathObj.relationship_path) {
@@ -27,7 +30,7 @@ export default function interpretRelationship(pathObj: RelationshipPath) {
         return 'husband'
       case 'spouse,child':
         return 'father in law'
-      case 'spouse,child, child':
+      case 'spouse,child,child':
         return 'grandfather in law'
       case 'spouse,child,parent':
         return 'brother in law'
@@ -37,6 +40,10 @@ export default function interpretRelationship(pathObj: RelationshipPath) {
         return 'brother in law'
       case 'parent,parent,spouse':
         return 'grandson in law'
+      case 'spouse,child,parent,spouse':
+        return 'brother in law'
+      case 'spouse,child,parent,parent':
+        return 'nephew in law'
       default:
         return 'complicated relationship'
     }
@@ -76,10 +83,14 @@ export default function interpretRelationship(pathObj: RelationshipPath) {
         return 'sister in law'
       case 'parent,parent,spouse':
         return 'granddaughter in law'
+      case 'spouse,child,parent,spouse':
+        return 'sister in law'
+      case 'spouse,child,parent,parent':
+        return 'niece in law'
       default:
         return 'complicated relationship'
     }
-  } else if (pathObj.target_person_gender === 'binary') {
+  } else if (pathObj.target_person_gender === 'nonbinary') {
     switch (pathObj.relationship_path) {
       case 'child':
         return 'parent'
@@ -115,6 +126,10 @@ export default function interpretRelationship(pathObj: RelationshipPath) {
         return 'sibling in law'
       case 'parent,parent,spouse':
         return 'grandchild in law'
+      case 'spouse,child,parent,spouse':
+        return 'sibling in law'
+      case 'spouse,child,parent,parent':
+        return 'nibling in law'
       default:
         return 'complicated relationship'
     }

@@ -11,3 +11,19 @@ export interface RelationshipPath {
   depth: number
   target_person_gender: string
 }
+
+export interface RelationshipData {
+  spouse: string
+  parents: string
+  children: string
+}
+
+export interface RelationshipDataWithId extends RelationshipData {
+  id: number
+}
+
+export interface RelationshipEntry {
+  person_id_1: number
+  person_id_2: number
+  relationship_type: string
+}
