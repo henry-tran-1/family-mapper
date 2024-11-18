@@ -72,7 +72,7 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
               value={formState.children}
             />
             <button
-              className="h-12 w-full m-3 p-2 rounded font-heading text-xl text-white bg-[#393E46]"
+              className="h-12 w-full m-3 p-2 rounded font-heading text-xl text-black bg-[#00ADB5]"
               type="submit"
             >
               Submit Relationships
@@ -85,8 +85,10 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
               Table of Family Member and their ID
             </caption>
             <thead className="border border-black">
-              <th className="p-3 m-1">Family Member</th>
-              <th className="p-3 m-1">Member ID</th>
+              <tr>
+                <th className="p-3 m-1">Family Member</th>
+                <th className="p-3 m-1">Member ID</th>
+              </tr>
             </thead>
             <tbody>
               {data?.persons.map((person) => (

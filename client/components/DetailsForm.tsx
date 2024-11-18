@@ -97,7 +97,7 @@ export default function DetailsForm({ onSubmit }: Props) {
         </select>
 
         <button
-          className="h-12 w-1/3 m-3 p-2 rounded font-heading text-xl text-white bg-[#393E46]"
+          className="h-12 w-1/3 m-3 p-2 rounded font-heading text-xl text-black bg-[#00ADB5]"
           type="submit"
         >
           Submit Details
