@@ -4,7 +4,6 @@ import { RelationshipPath } from '../models/relationships'
 // {relationship_path: 'string', depth: integer, target_person_gender: 'string'}
 // translates relationship_path into the actual relationship, based on gender
 export default function interpretRelationship(pathObj: RelationshipPath) {
-  console.log(pathObj)
   if (pathObj.target_person_gender === 'male') {
     switch (pathObj.relationship_path) {
       case 'child':

@@ -46,7 +46,7 @@ export async function seed(knex) {
       gender: 'male',
       generation: 3,
       image: 'kenneth_polaroid.png',
-      description: 'biomedical engineer',
+      description: "don't trust his movie suggestions",
     },
     {
       id: 6,
@@ -54,7 +54,7 @@ export async function seed(knex) {
       gender: 'male',
       generation: 3,
       image: 'henry_polaroid.png',
-      description: 'struggled all weekend on photopea',
+      description: 'loves a steak and cheese pie',
     },
     {
       id: 7,
