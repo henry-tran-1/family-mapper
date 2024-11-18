@@ -9,7 +9,7 @@ export default function DetailsForm({ onSubmit }: Props) {
   const [formState, setFormState] = useState({
     name: '',
     gender: 'nonbinary',
-    generation: 0,
+    generation: 1,
     description: '',
   })
 
@@ -26,6 +26,7 @@ export default function DetailsForm({ onSubmit }: Props) {
   ) => {
     const { name, value } = event.target
 
+    // Convert generation from string to number
     if (name === 'generation') {
       const valueNum = Number(value)
       setFormState((prev) => ({ ...prev, [name]: valueNum }))
@@ -36,9 +37,13 @@ export default function DetailsForm({ onSubmit }: Props) {
 
   return (
     <div>
-      <p>This will be the person details form</p>
-
-      <form onSubmit={handleSubmit}>
+      <h2 className="m-3 text-2xl text-center font-heading">
+        Add more to your family!
+      </h2>
+      <h3 className="m-2 text-xl text-center font-heading">
+        Please enter their details below
+      </h3>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
         {/* Name input */}
         <label htmlFor="name">Name:</label>
         <input
@@ -48,6 +53,7 @@ export default function DetailsForm({ onSubmit }: Props) {
           type="text"
           placeholder="Enter Person's Name"
           value={formState.name}
+          className="w-1/3 m-3"
         />
 
         {/* Description input */}
@@ -59,11 +65,17 @@ export default function DetailsForm({ onSubmit }: Props) {
           rows={2}
           placeholder="Something about them"
           value={formState.description}
+          className="w-1/3 m-3"
         />
 
         {/* Gender input */}
         <label htmlFor="gender">Gender:</label>
-        <select onChange={handleChange} name="gender" id="gender">
+        <select
+          onChange={handleChange}
+          name="gender"
+          id="gender"
+          className="w-1/3 m-3"
+        >
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="nonbinary" selected>
@@ -73,14 +85,24 @@ export default function DetailsForm({ onSubmit }: Props) {
 
         {/* Generation input */}
         <label htmlFor="generation">Generation:</label>
-        <select onChange={handleChange} name="generation" id="generation">
+        <select
+          onChange={handleChange}
+          name="generation"
+          id="generation"
+          className="w-1/3 m-3"
+        >
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
 
-        <button type="submit">Submit Details</button>
+        <button
+          className="h-12 w-1/3 m-3 p-2 rounded font-heading text-xl text-white bg-[#393E46]"
+          type="submit"
+        >
+          Submit Details
+        </button>
       </form>
     </div>
   )

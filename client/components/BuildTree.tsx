@@ -17,12 +17,8 @@ export default function BuildTree() {
     setPersonId(() => result)
   }
 
-  console.log(personId)
-
   return (
     <>
-      <p>there will be forms here to enter new family members</p>
-
       <DetailsForm onSubmit={handleSubmitDetails} />
     </>
   )
