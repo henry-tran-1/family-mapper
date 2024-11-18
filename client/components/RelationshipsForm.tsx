@@ -80,19 +80,23 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
           </form>
         </section>
         <section>
-          <table>
+          <table className="border border-black">
             <caption className="w-[400px]">
               Table of Family Member and their ID
             </caption>
-            <thead>
+            <thead className="border border-black">
               <th className="p-3 m-1">Family Member</th>
               <th className="p-3 m-1">Member ID</th>
             </thead>
             <tbody>
               {data?.persons.map((person) => (
                 <tr key={person.id}>
-                  <td className="text-center">{person.name}</td>
-                  <td className="text-center">{person.id}</td>
+                  <td className="text-center border border-black">
+                    {person.name.charAt(0).toUpperCase() + person.name.slice(1)}
+                  </td>
+                  <td className="text-center border border-black">
+                    {person.id}
+                  </td>
                 </tr>
               ))}
             </tbody>
