@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import * as API from '../apis/apiClient'
 import { PersonData } from '../../models/person'
+import { RelationshipDataWithId } from '../../models/relationships'
 
 // Get the whole list of family members
 export function useAllPersons() {
@@ -29,6 +30,19 @@ export function useAddPerson() {
   return useMutation({
     mutationFn: (personDetails: PersonData) => API.addPerson(personDetails),
     onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ['persons'] })
+    },
+  })
+}
+
+// Add new relationships for an added person to relationships table
+export function useAddRelationships() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: (personRelationships: RelationshipDataWithId) =>
+      API.addRelationships(personRelationships),
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['persons'] })
     },
   })

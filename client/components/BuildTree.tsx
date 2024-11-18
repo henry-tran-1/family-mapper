@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { PersonData } from '../../models/person'
-import { useAddPerson } from '../hooks/hooks'
+import { useAddPerson, useAddRelationships } from '../hooks/hooks'
 import DetailsForm from './DetailsForm'
+import RelationshipsForm from './RelationshipsForm'
+import { RelationshipData } from '../../models/relationships'
 
 // A parent component, that will hold the DetailsForm and RelationshipsForm
 // The DetailsForm will appear first, and completed first
@@ -10,6 +12,7 @@ import DetailsForm from './DetailsForm'
 // RelationshipsForm will take the new ID as a prop, and allow the relationships to be entered
 export default function BuildTree() {
   const addPerson = useAddPerson()
+  const addRelationships = useAddRelationships()
   const [personId, setPersonId] = useState('')
 
   const handleSubmitDetails = async (person: PersonData) => {
@@ -17,9 +20,24 @@ export default function BuildTree() {
     setPersonId(() => result)
   }
 
+  const handleSubmitRelationships = async ({
+    personId,
+    relationships,
+  }: {
+    personId: string
+    relationships: RelationshipData
+  }) => {
+    const id = Number(personId)
+    await addRelationships.mutateAsync({ id, ...relationships })
+  }
+
   return (
     <>
       <DetailsForm onSubmit={handleSubmitDetails} />
+      <RelationshipsForm
+        personId={personId}
+        onSubmit={handleSubmitRelationships}
+      />
     </>
   )
 }

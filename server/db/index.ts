@@ -1,4 +1,7 @@
-import { RelationshipPath } from '../../models/relationships.ts'
+import {
+  RelationshipEntry,
+  RelationshipPath,
+} from '../../models/relationships.ts'
 import { Person, PersonData } from '../../models/person.ts'
 import connection from './connection.ts'
 
@@ -15,6 +18,14 @@ export async function addPerson(person: PersonData, db = connection) {
     image: 'unknown_polaroid.png',
   })
   return id
+}
+
+// Add new relationships for an added person to relationships table
+export async function addRelationship(
+  relationship: RelationshipEntry,
+  db = connection,
+) {
+  await db('relationships').insert(relationship)
 }
 
 // Recursive CTE query that finds relationship of endPerson to startPerson

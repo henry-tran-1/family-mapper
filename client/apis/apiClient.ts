@@ -1,5 +1,6 @@
 import request from 'superagent'
 import { Person, PersonData } from '../../models/person'
+import { RelationshipDataWithId } from '../../models/relationships'
 
 // Get the whole list of family members
 export async function getAllPersons() {
@@ -35,4 +36,11 @@ export async function getRelationship(
 export async function addPerson(personDetails: PersonData) {
   const res = await request.post('/api/v1/persons').send(personDetails)
   return res.body
+}
+
+// Add new relationships for an added person to relationships table
+export async function addRelationships(
+  relationshipData: RelationshipDataWithId,
+) {
+  await request.post('/api/v1/relationships').send(relationshipData)
 }

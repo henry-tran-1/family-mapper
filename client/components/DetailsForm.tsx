@@ -75,12 +75,11 @@ export default function DetailsForm({ onSubmit }: Props) {
           name="gender"
           id="gender"
           className="w-1/3 m-3"
+          defaultValue={'nonbinary'}
         >
           <option value="male">Male</option>
           <option value="female">Female</option>
-          <option value="nonbinary" selected>
-            Non-Binary
-          </option>
+          <option value="nonbinary">Non-Binary</option>
         </select>
 
         {/* Generation input */}
