@@ -27,7 +27,7 @@ export default function SeeTree() {
       <form className="flex items-center justify-center">
         <label
           htmlFor="sourceId"
-          className="m-5 text-2xl font-medium font-heading"
+          className="m-5 p-5 text-2xl text-[#111010] font-medium font-heading"
         >
           Please select yourself
         </label>
@@ -35,7 +35,7 @@ export default function SeeTree() {
           name="sourceId"
           id="sourceId"
           onChange={handleChange}
-          className="text-2xl bg-[#00ADB5] border-solid rounded font-heading border-gray-950 h-11 "
+          className="text-2xl text-[#111010] bg-[#00ADB5] border-solid rounded-md font-heading border-[#111010] border-2 h-10"
         >
           {data?.persons.map((person) => (
             <option key={person.id} value={String(person.id)}>

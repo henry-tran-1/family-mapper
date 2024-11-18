@@ -4,7 +4,7 @@ import Nav from './Nav'
 function App() {
   return (
     <div>
-      <h1 className="text-4xl font-heading font-medium text-center p-5 bg-[#00ADB5]">
+      <h1 className="text-5xl font-heading font-medium text-[#FAF8EF] text-center p-7 bg-[#224362]">
         An Interactive Family Tree App
       </h1>
       <Nav />

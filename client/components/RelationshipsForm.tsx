@@ -32,17 +32,25 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
 
   return (
     <>
-      <h2 className="m-3 text-2xl text-center font-heading">
+      <h2 className="m-3 mb-14 text-2xl text-[#111010] font-medium text-center font-heading">
         Add more to your family!
       </h2>
-      <h3 className="m-2 text-xl text-center font-heading">
-        Please enter their relationships, do not forget any, or this App will
-        break!
+      <h3 className="m-2 mb-0.5 text-xl font-medium text-center font-heading">
+        Please enter all their relationships, do not forget any, or this App
+        will break!
       </h3>
-      <div className="flex justify-around">
-        <section>
+      <h3 className="mt-0.5 mb-6 text-md font-medium text-center font-heading">
+        (do not forget any, or this App might break)
+      </h3>
+      <div className="flex justify-center">
+        <section className="mr-16">
           <form onSubmit={handleSubmit} className="flex flex-col items-center ">
-            <label htmlFor="spouse">Spouse</label>
+            <label
+              htmlFor="spouse"
+              className="text-lg font-medium font-heading"
+            >
+              Spouse
+            </label>
             <input
               onChange={handleChange}
               name="spouse"
@@ -50,19 +58,31 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
               type="text"
               placeholder="Spouse's ID"
               value={formState.spouse}
+              className="w-full m-3 mt-0.5 h-9 text-lg text-center"
             />
 
-            <label htmlFor="parents">Parents</label>
+            <label
+              htmlFor="parents"
+              className="text-lg font-medium font-heading"
+            >
+              Parents
+            </label>
             <input
               onChange={handleChange}
               name="parents"
               id="parents"
               type="text"
-              placeholder="Parent'sID"
+              placeholder="Parent's ID"
               value={formState.parents}
+              className="w-full m-3 mt-0.5 h-9 text-lg text-center"
             />
 
-            <label htmlFor="children">Children</label>
+            <label
+              htmlFor="children"
+              className="text-lg font-medium font-heading"
+            >
+              Children
+            </label>
             <input
               onChange={handleChange}
               name="children"
@@ -70,20 +90,18 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
               type="text"
               placeholder="Child's ID"
               value={formState.children}
+              className="w-full m-3 mt-0.5 h-9 text-lg text-center"
             />
             <button
-              className="h-12 w-full m-3 p-2 rounded font-heading text-xl text-black bg-[#00ADB5]"
+              className="h-12 w-full m-3 p-2 rounded font-heading font-medium text-xl text-black bg-[#00ADB5]"
               type="submit"
             >
               Submit Relationships
             </button>
           </form>
         </section>
-        <section>
-          <table className="border border-black">
-            <caption className="w-[400px]">
-              Table of Family Member and their ID
-            </caption>
+        <section className="ml-16">
+          <table className="text-lg font-medium font-heading">
             <thead className="border border-black">
               <tr>
                 <th className="p-3 m-1">Family Member</th>
@@ -102,6 +120,9 @@ export default function RelationshipsForm({ onSubmit, personId }: Props) {
                 </tr>
               ))}
             </tbody>
+            <caption className="w-[400px]">
+              Table of Family Member and their IDs
+            </caption>
           </table>
         </section>
       </div>
