@@ -1,36 +1,28 @@
-# Boilerplate: Fullstack with Sass
+# Family Mapper
+Welcome to my family-mapper's README.  Here you'll find everything you need to get started!
 
-## Setup
+## Overview
+I worked on this project during my time at the Dev Academy Aotearoa bootcamp.  I wanted to create an interactive app where I could map out my family tree, and display details of each person and their relationship with any other selected member of the family.  I especially wanted to create this app for my niece and nephew who know even less about our distant family than I do!  
 
-### What's included
+## Features
+- Displays all family members (currently displays them in the correct generation, but not correct position, or any lines between direct members)
+- Shows details of each person when clicked
+- Allows user to select any family member, and the family tree will dynamically display all other member's relationships to them
+- Allows user to add additional family members to the database
 
-This repo includes:
+## Tech Stack
+**Frontend:** React, Typescript
+**Backend:** Node.js, Express.js
+**Database:** SQLite3, Knex.js
+**Styling:** Tailwind CSS
 
-- a single, simple API endpoint (`/api/v1/fruits`)
-- a single React component (`<App />`)
-- an example database module (`server/db/fruits.js`)
-- an API client module (`client/apis/fruits.js`)
-- configuration for Vitest and testing library
-- configuration for server-side debugging in VS Code
-- configuration for preprocessing Sass
 
-### Installation
+## Getting Started/Installation
+- Clone repository
+- Navigate into repository
+- npm install
+- npm run dev
+- Nuns on browser: http://localhost:3000
 
-#### **From the Github UI**
-
-See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
-
-#### **From the command line**
-
-```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
-npm install # to install dependencies
-npm run dev # to start the dev server
-```
-
-You can find the server running on [http://localhost:3000](http://localhost:3000) and the client running on [http://localhost:5173](http://localhost:5173).
-
----
-
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=boilerplate-fullstack)
+## How It Works
+The database consists of two tables, persons and relationships
