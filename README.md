@@ -39,8 +39,11 @@ I worked on this project during my time at the Dev Academy Aotearoa bootcamp.  I
 
 ## How It Works
 The relationships table records every relationship of type: parent-child, child-parent, and spouse-spouse.  Through just these connections, every relationship can be connected by a recursive query.
+
 This recursive query is performed by the function: findRelationshipPath on /server/db/index.ts, which looks at two people (source_person and target_person) and returns their relationship path e.g. 'child,child,parent'.
+
 The query looks at the direct relationships of the **source_person**, and if the **target_person** is one of them, it is successful and returns this direct relationship.  If the **target person** is not one of them, it will then query all the direct relationships of the directly related people to **source_person**, and if the **target_person** is still not one of them, it will continue this recursive querying until success.
+
 This relationship path is then interpreted into a relationship by a switch statement on /server/interpret.ts, e.g. 'child,child,parent' would return 'uncle'.
 
 ## Future Improvements
