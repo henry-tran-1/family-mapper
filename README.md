@@ -26,11 +26,11 @@ I worked on this project during my time at the Dev Academy Aotearoa bootcamp.  I
   ```bash
   cd family-mapper
   ```
-- Install packages:
+- Install dependencies/packages:
   ```bash
   npm install
   ```
-- Run server:
+- Run the development server:
   ```bash
   npm run dev
   ```
@@ -38,13 +38,28 @@ I worked on this project during my time at the Dev Academy Aotearoa bootcamp.  I
   http://localhost:5173
 
 ## How It Works
-The relationships table records every relationship of type: parent-child, child-parent, and spouse-spouse.  Through just these connections, every relationship can be connected by a recursive query.
+The **relationships** table records direct relationships of three types:
+- Parent-Child
+- Child-Parent
+- Spouse-Spouse
+From these direct relationships alone, all other relationships can be determined using a **recursive query**.
 
-This recursive query is performed by the function: findRelationshipPath on /server/db/index.ts, which looks at two people (source_person and target_person) and returns their relationship path e.g. 'child,child,parent'.
+### The Process:
+1. The recursive query is performed by the 'findRelationshipPath' function, located in '/server/db/index.ts'.
+  - It takes two people as inputs: 'source_person' and 'target_person'.
+  - It returns the relationship path between them, e.g. 'child, child, parent' ('source_person' is the child of someone, who is a child of someone, who is the parent of the 'target_person'.
 
-The query looks at the direct relationships of the **source_person**, and if the **target_person** is one of them, it is successful and returns this direct relationship.  If the **target person** is not one of them, it will then query all the direct relationships of the directly related people to **source_person**, and if the **target_person** is still not one of them, it will continue this recursive querying until success.
+2. How the query works:
+  - First, it checks the direct relationships of the 'source_person'.
+  - If the 'target_person' is found, it returns the direct relationship.
+  - If not, the query recursively checks the direct relationships of people who are directly related to the 'source_person'.
+  - This process repeats recursively until the 'target_person' is found.
 
-This relationship path is then interpreted into a relationship by a switch statement on /server/interpret.ts, e.g. 'child,child,parent' would return 'uncle'.
+3. Interpreting the relationship path:
+   - The relationship path returned by the query is passed to a large switch statement in '/server/interpret.ts'.
+   - This path is translated into a meaningful relationship, e.g. 'child, child, parent' returns 'uncle' or 'auntie'.
+
+By combining recursive querying and relationship interpretation, the app dynamically calculates and displays family member relationships.
 
 ## Future Improvements
 - Render the family members in the correct order:
