@@ -45,19 +45,19 @@ The **relationships** table records direct relationships of three types:
 From these direct relationships alone, all other relationships can be determined using a **recursive query**.
 
 ### The Process:
-1. The recursive query is performed by the 'findRelationshipPath' function, located in '/server/db/index.ts'.
-  - It takes two people as inputs: 'source_person' and 'target_person'.
-  - It returns the relationship path between them, e.g. 'child, child, parent' ('source_person' is the child of someone, who is a child of someone, who is the parent of the 'target_person'.
+1. The recursive query is performed by the `findRelationshipPath` function, located in `/server/db/index.ts`.
+  - It takes two people as inputs: `source_person` and `target_person`.
+  - It returns the relationship path between them, e.g. `child, child, parent` (`source_person` is the child of someone, who is a child of someone, who is the parent of the `target_person`.
 
 2. How the query works:
-  - First, it checks the direct relationships of the 'source_person'.
-  - If the 'target_person' is found, it returns the direct relationship.
-  - If not, the query recursively checks the direct relationships of people who are directly related to the 'source_person'.
-  - This process repeats recursively until the 'target_person' is found.
+  - First, it checks the direct relationships of the `source_person`.
+  - If the `target_person` is found, it returns the direct relationship.
+  - If not, the query recursively checks the direct relationships of people who are directly related to the `source_person`.
+  - This process repeats recursively until the `target_person` is found.
 
 3. Interpreting the relationship path:
-   - The relationship path returned by the query is passed to a large switch statement in '/server/interpret.ts'.
-   - This path is translated into a meaningful relationship, e.g. 'child, child, parent' returns 'uncle' or 'auntie'.
+   - The relationship path returned by the query is passed to a large switch statement in `/server/interpret.ts`.
+   - This path is translated into a meaningful relationship, e.g. `child, child, parent` returns 'uncle' or 'auntie'.
 
 By combining recursive querying and relationship interpretation, the app dynamically calculates and displays family member relationships.
 
@@ -65,7 +65,7 @@ By combining recursive querying and relationship interpretation, the app dynamic
 - Render the family members in the correct order:
   - Position spouses next to each other
   - Place children directly beneath their parents
-- Add visual connections
+- Add visual connections:
   - Render vector/lines between direct family members
-- Enhance personalisation
+- Enhance personalisation:
   - Allow users to upload and display family member photos
